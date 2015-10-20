@@ -33,14 +33,16 @@ public final class GrammarCachingSAXParser extends SAXParser {
     }
 
     private static final String SEMICOLON = ";";
+    private static final String DEFAULT_CATALOG_PATH = "classpath:catalog.xml";
+    private static final String XML_CATALOG_FILES = "xml.catalog.files";
 
     private static final String[] getCatalogFiles() {
-        String xmlCatalogFiles = System.getProperty("xml.catalog.files");
+        String xmlCatalogFiles = System.getProperty(XML_CATALOG_FILES);
 
         if (xmlCatalogFiles != null) {
             return xmlCatalogFiles.split(SEMICOLON);
         } else {
-            return new String [] { "classpath:catalog.xml" };
+            return new String [] { DEFAULT_CATALOG_PATH };
         }
     }
 
